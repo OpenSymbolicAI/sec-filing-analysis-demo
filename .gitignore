@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+
+# Virtual environments
+.venv/
+
+# Environment variables
+.env
+
+# OS files
+.DS_Store
+
+# IDE
+.idea/
+*.swp
+*.swo
+
+# Claude
+.claude/
+
+# Preparation notes
+.preparation/
+
+# Project-specific
+demo/data/filings/
+demo/data/lancedb/
+demo/logs/

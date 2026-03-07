@@ -1,0 +1,77 @@
+[
+  {
+    "label": "1. Simple Extraction",
+    "query": "What was Microsoft's operating income in its most recent fiscal year?",
+    "ground_truth": "Microsoft's operating income in fiscal year 2025 (ending June 30, 2025) was $128,528 million ($128.5 billion)."
+  },
+  {
+    "label": "2. Simple Extraction",
+    "query": "What was Apple's total net sales in its most recent fiscal year?",
+    "ground_truth": "Apple's total net sales in fiscal year 2025 (ending September 27, 2025) were $416,161 million ($416.2 billion), consisting of $307,003 million in Products and $109,158 million in Services."
+  },
+  {
+    "label": "3. Simple Extraction",
+    "query": "What was NVIDIA's net income in its most recent fiscal year?",
+    "ground_truth": "NVIDIA's net income in fiscal year 2026 (ending January 25, 2026) was $120,067 million ($120.1 billion), up 65% from $72,880 million in the prior year."
+  },
+  {
+    "label": "4. Simple Extraction",
+    "query": "What was Tesla's total revenue in its most recent fiscal year?",
+    "ground_truth": "Tesla's total revenues in fiscal year 2025 (ending December 31, 2025) were $94,827 million ($94.8 billion), consisting of automotive revenues of $69,526 million, energy generation and storage of $12,771 million, and services and other of $12,530 million."
+  },
+  {
+    "label": "5. Simple Extraction",
+    "query": "What was Netflix's operating income and operating margin in its most recent fiscal year?",
+    "ground_truth": "Netflix's operating income in fiscal year 2025 (ending December 31, 2025) was $13,327 million ($13.3 billion) with an operating margin of 29.5%, up from 26.7% in the prior year."
+  },
+  {
+    "label": "6. Cross-Company Comparison",
+    "query": "Compare the total revenue of Amazon, Tesla, and NVIDIA in their most recent fiscal year.",
+    "ground_truth": "Amazon had the highest revenue at $716,924 million ($716.9 billion), followed by NVIDIA at $215,938 million ($215.9 billion), and Tesla at $94,827 million ($94.8 billion)."
+  },
+  {
+    "label": "7. Cross-Company Comparison",
+    "query": "Which company had a higher operating margin in its most recent fiscal year: Microsoft or Google (Alphabet)?",
+    "ground_truth": "Microsoft had a higher operating margin at approximately 45.6% ($128,528M operating income on $281,724M revenue) compared to Alphabet's 32.0% ($129,039M operating income on $402,836M revenue)."
+  },
+  {
+    "label": "8. Cross-Company Comparison",
+    "query": "Compare the R&D spending of Meta and Apple in their most recent fiscal year.",
+    "ground_truth": "Meta spent $57,372 million ($57.4 billion) on R&D in 2025, while Apple spent $34,550 million ($34.6 billion) in fiscal year 2025. Meta spent approximately 66% more on R&D than Apple."
+  },
+  {
+    "label": "9. Cross-Company Comparison",
+    "query": "Between Salesforce and Adobe, which had higher total revenue in its most recent fiscal year?",
+    "ground_truth": "Salesforce had higher total revenue at $41,525 million ($41.5 billion) in fiscal year 2026 (ending January 31, 2026) compared to Adobe's $23,769 million ($23.8 billion) in fiscal year 2025 (ending November 28, 2025)."
+  },
+  {
+    "label": "10. Cross-Company Comparison",
+    "query": "Compare the net income of Netflix and Adobe in their most recent fiscal year.",
+    "ground_truth": "Netflix had higher net income at $10,981 million ($11.0 billion) in 2025 compared to Adobe's $7,130 million ($7.1 billion) in fiscal year 2025. Netflix's net income was approximately 54% higher than Adobe's."
+  },
+  {
+    "label": "11. Aggregation Across All 10",
+    "query": "Among Apple, Microsoft, Google, Amazon, Tesla, Meta, NVIDIA, Netflix, Salesforce, and Adobe, which company has the largest cash and cash equivalents on its balance sheet?",
+    "ground_truth": "Amazon had the largest cash and cash equivalents at $86,810 million ($86.8 billion) as of December 31, 2025. The ranking is: Amazon $86,810M, Meta $35,873M, Apple $35,934M, Microsoft $30,242M, Alphabet $30,708M, Tesla $16,513M, NVIDIA $10,605M, Netflix $9,034M, Salesforce $7,327M, Adobe $5,431M."
+  },
+  {
+    "label": "12. Aggregation Across All 10",
+    "query": "Which of the 10 companies (Apple, Microsoft, Google, Amazon, Tesla, Meta, NVIDIA, Netflix, Salesforce, Adobe) reported the highest total revenue in its most recent fiscal year?",
+    "ground_truth": "Amazon reported the highest total revenue at $716,924 million ($716.9 billion). The full ranking: Amazon $716.9B, Alphabet $402.8B, Microsoft $281.7B, NVIDIA $215.9B, Meta $201.0B, Apple $416.2B, Tesla $94.8B, Netflix $45.2B, Salesforce $41.5B, Adobe $23.8B."
+  },
+  {
+    "label": "13. Aggregation Across All 10",
+    "query": "Rank Apple, Microsoft, Google, Amazon, Tesla, Meta, NVIDIA, Netflix, Salesforce, and Adobe by net income from highest to lowest.",
+    "ground_truth": "Ranking by net income: Alphabet $132,170M, NVIDIA $120,067M, Apple $112,010M, Microsoft $101,832M, Amazon $77,670M, Meta $60,458M, Netflix $10,981M, Salesforce $7,457M, Adobe $7,130M, Tesla $3,855M."
+  },
+  {
+    "label": "14. Aggregation Across All 10",
+    "query": "Among Apple, Microsoft, Google, Amazon, Tesla, Meta, NVIDIA, Netflix, Salesforce, and Adobe, which one had the highest year-over-year revenue growth rate in its most recent fiscal year?",
+    "ground_truth": "NVIDIA had the highest year-over-year revenue growth rate at approximately 65%, growing from $130,497 million to $215,938 million. Other notable growth rates: Meta 22% ($164.5B to $201.0B), Netflix 16% ($39.0B to $45.2B), Alphabet 15% ($350.0B to $402.8B), Microsoft 15% ($245.1B to $281.7B)."
+  },
+  {
+    "label": "15. Aggregation Across All 10",
+    "query": "Which of Apple, Microsoft, Google, Amazon, Tesla, Meta, NVIDIA, Netflix, Salesforce, and Adobe has the smallest total employee headcount as reported in their most recent 10-K filing?",
+    "ground_truth": "Netflix had the smallest headcount at approximately 16,000 full-time employees. The ranking from smallest to largest: Netflix ~16,000, Adobe 31,360, NVIDIA ~42,000, Meta 78,865, Salesforce 83,334, Tesla 134,785, Apple ~166,000, Alphabet 190,820, Microsoft ~228,000, Amazon ~1,576,000."
+  }
+]

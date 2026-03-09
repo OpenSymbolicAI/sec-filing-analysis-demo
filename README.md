@@ -42,7 +42,7 @@ Edit `.env` with your provider details. You need two things:
 ```env
 LLM_API_KEY=gsk_your_groq_key
 LLM_BASE_URL=https://api.groq.com/openai/v1
-LLM_MODEL=llama-3.3-70b-versatile
+LLM_MODEL=openai/gpt-oss-120b
 
 EMBED_API_KEY=fw_your_fireworks_key
 EMBED_BASE_URL=https://api.fireworks.ai/inference/v1
@@ -67,14 +67,14 @@ EMBED_MODEL=text-embedding-3-small
 
 ```bash
 # Pull models first
-ollama pull llama3.3
+ollama pull gpt-oss:20b
 ollama pull nomic-embed-text
 ```
 
 ```env
 LLM_API_KEY=ollama
 LLM_BASE_URL=http://localhost:11434/v1
-LLM_MODEL=llama3.3
+LLM_MODEL=gpt-oss:20b
 
 EMBED_API_KEY=ollama
 EMBED_BASE_URL=http://localhost:11434/v1
@@ -131,20 +131,44 @@ The full query set lives in `demo/queries.json` with ground truth derived from t
 
 ## Benchmark Results
 
-Results from running all 15 queries (same LLM, same retrieval index):
+Results from running all 15 queries with GPT-OSS 120B on Groq (same LLM, same retrieval index):
 
-| Category | Queries | Avg ReAct Tokens | Avg BP Tokens | Avg Token Ratio | ReAct Failures |
-|----------|---------|-----------------|--------------|----------------|---------------|
-| Simple Extraction | 1-5 | 12,461 | 4,026 | 3.3x | 0 |
-| Cross-Company | 6-10 | 89,441 | 7,191 | 12.3x | 1 |
-| Aggregation | 11-15 | 176,550 | 29,334 | 8.7x | 2 |
+### Efficiency
+
+| Metric | ReAct | Behaviour Programming | Ratio |
+|--------|-------|----------------------|-------|
+| **Success Rate** | 12/15 (80%) | **15/15 (100%)** | — |
+| **Total LLM Calls** | 221 | **64** | 3.5x fewer |
+| **Total Tokens** | 3,245,043 | **271,499** | **12x fewer** |
+| **Total Latency** | 494.7s | **68.7s** | **7.2x faster** |
+
+#### By Category
+
+| Category | Queries | Avg ReAct Tokens | Avg BP Tokens | Token Ratio | ReAct Failures |
+|----------|---------|-----------------|--------------|-------------|---------------|
+| Simple Extraction | 1-5 | 19,307 | 5,801 | 3.3x | 0 |
+| Cross-Company | 6-10 | 87,969 | 10,280 | 8.6x | 0 |
+| Aggregation | 11-15 | 541,733 | 29,219 | 18.5x | 3 |
+
+### Quality (LLM-as-Judge, 1-5 scale)
+
+| Dimension | ReAct | Behaviour Programming |
+|-----------|-------|----------------------|
+| Correctness | 4.0 | **4.2** |
+| Completeness | **3.8** | 3.4 |
+| Relevance | **4.7** | 4.5 |
+| Faithfulness | 4.1 | **4.7** |
+| Conciseness | 4.2 | **4.7** |
+| **Overall** | 4.15 | **4.32** |
 
 **Key findings:**
 
-- BP succeeded on **all 15 queries**; ReAct failed on 3 (hit 25-iteration limit on complex aggregations).
-- BP used **~7.8x fewer tokens overall** (196K vs 1.53M total).
-- On cross-company comparisons, BP was up to **35x more token-efficient**.
-- ReAct occasionally answered from parametric knowledge without retrieving evidence (queries 14-15: 1 LLM call, ~1,500 tokens, no tool calls).
+- BP succeeded on **all 15 queries**; ReAct failed on 3 (hit iteration limit on complex aggregations).
+- BP used **12x fewer tokens** and was **7.2x faster** overall.
+- Answer quality is comparable — BP scores slightly higher overall (4.32 vs 4.15).
+- BP has notably higher **faithfulness** (4.7 vs 4.1), hallucinating less due to its deterministic execution plan.
+- The efficiency gap widens with complexity: 3.3x for simple lookups, **18.5x for aggregations across all 10 companies**.
+- Both agents struggle on the hardest aggregation queries (Q14-15), but BP at least produces answers while ReAct fails outright.
 
 ## Project Structure
 
